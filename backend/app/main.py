@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
+from app.api.v1 import api_router
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -40,3 +41,7 @@ async def api_status():
         "api_version": "v1",
         "status": "operational"
     }
+
+
+# Include API v1 router
+app.include_router(api_router, prefix=settings.API_V1_STR)

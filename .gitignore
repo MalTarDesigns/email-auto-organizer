@@ -72,3 +72,6 @@ Thumbs.db
 
 # Alembic
 alembic/versions/*.pyc
+
+# Specs and planning documents
+specs/
