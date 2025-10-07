@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, DateTime, Text
+from sqlalchemy import Column, String, DateTime, Text, JSON
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 import uuid
@@ -16,6 +16,7 @@ class User(Base):
     access_token = Column(Text, nullable=False)
     refresh_token = Column(Text, nullable=False)
     token_expires_at = Column(DateTime)
+    preferences = Column(JSON, default=dict)  # User preferences for triage rules
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
