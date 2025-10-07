@@ -1,0 +1,19 @@
+version: '3.8'
+
+# Development-specific overrides
+# Usage: docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
+
+services:
+  backend:
+    environment:
+      - DEBUG=true
+      - LOG_LEVEL=debug
+    ports:
+      - "8000:8000"
+      - "5678:5678"  # debugpy port
+
+  frontend:
+    environment:
+      - NODE_ENV=development
+    ports:
+      - "3000:3000"
